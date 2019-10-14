@@ -4,7 +4,7 @@ import logging.config
 
 class Logger:
     logging.basicConfig(level=logging.INFO, filename="log.log", filemode="w",
-                        format='%(asctime)s - %(levelname)s - %(message)s')
+                        format="%(asctime)s - %(levelname)s - %(message)s")
 
     @staticmethod
     def info(message):
@@ -17,3 +17,7 @@ class Logger:
     @staticmethod
     def error(message):
         logging.error(message)
+
+    @staticmethod
+    def step(message, counter):
+        logging.info("<<<<<<<<Step %d>>>>>>>>>>>>.\n%s\n" % (counter, message))

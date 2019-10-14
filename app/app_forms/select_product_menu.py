@@ -9,7 +9,7 @@ class SelectProductMenu:
                                 "'jsDownloadApplications')][..//div[contains(text(), '%s')]]"
 
     def download_product(self, product):
-        self.get_download_product_button(product).click()
+        self.get_download_product_button(product).wait_and_click()
 
     def get_app_id(self, product):
         return int(self.get_download_product_button(product).get_attribute(self.id_attribute_name))

@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 
 from framework.browser.browser import Browser
+from framework.custom_waites.mail_was_sent import mail_was_sent
 from resources import config
 
 
@@ -19,3 +20,8 @@ class Waiter:
     def wait_until_captcha_is_visible(by, element):
         WebDriverWait(Browser.get_driver(), config.timeout_for_captcha).until(
             expected_conditions.invisibility_of_element_located((by, element)))
+
+    @staticmethod
+    def wait_while_email_received(mail):
+        WebDriverWait(Browser.get_driver(), config.timeout_for_email, poll_frequency=1).until(
+            mail_was_sent(mail))
